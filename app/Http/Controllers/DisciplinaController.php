@@ -81,7 +81,6 @@ class DisciplinaController extends Controller
         $disciplina->titulo = $request->titulo;
         $disciplina->ementa = $request->ementa;
         $disciplina->save();
-
         return redirect("/disciplinas/$disciplina->id");
     }
 
@@ -93,6 +92,7 @@ class DisciplinaController extends Controller
      */
     public function destroy(Disciplina $disciplina)
     {
-        //
+        $disciplina->delete();
+        return redirect('/');
     }
 }
