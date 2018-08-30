@@ -1,3 +1,4 @@
+@extends('layouts.master')
 <form method="POST" action="/disciplinas/{{ $disciplina->id  }}">
         {{ csrf_field() }}
         {{ method_field('patch') }}

@@ -1,4 +1,7 @@
-<a href="/disciplinas/create"><h1>Cadastrar disciplina</h1></a>
+@extends('layouts.master')
+<p>
+    <a href="/disciplinas/create"><h1>Cadastrar disciplina</h1></a>
+</p>
     <ul>
     @foreach ($disciplinas as $disciplina)
         <li>
