@@ -95,4 +95,29 @@ class DisciplinaController extends Controller
         $disciplina->delete();
         return redirect('/');
     }
+
+
+/**
+ Cadastra Turma na Disciplina
+*/ 
+    public function createTurma($disciplina_id)
+{
+    return view('disciplinas.turmas.create',compact('disciplina_id'));
+}
+
+//Método para salvar a disciplina e sua turma do formulario de cadastro de turmas
+
+public function storeTurma(Request $request,Disciplina $disciplina)
+{
+    $turma = new \App\Turma;
+    $turma->ministrante = $request->ministrante;
+    $turma->inicio = $request->inicio; #desafio! Receber dd/mm/YYYY
+    $turma->fim = $request->fim; #desafio: idem
+    $turma->bibliografia = $request->bibliografia;
+    $turma->disciplina_id = $disciplina->id;
+
+    $disciplina->turmas()->save($turma);
+    return redirect("/disciplinas/$disciplina->id");
+}
+
 }
