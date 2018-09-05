@@ -6,10 +6,11 @@
 <a href="/disciplinas/{{ $disciplina->id }}/turmas/create">Inserir Turma</a>
 
 <h2>Turmas</h2>
-@foreach ($disciplina->turmas as $turma)
+@foreach ($disciplina->turmas->sortByDesc('inicio') as $turma)
 <div>
     {{ $turma->ministrante }}
-    {{ $turma->inicio }}
+    {{ Carbon\Carbon::parse($turma->inicio)->format('d/m/Y')}}
+    {{ Carbon\Carbon::parse($turma->fim)->format('d/m/Y')}}
 </div>
 @endforeach
 @endsection
